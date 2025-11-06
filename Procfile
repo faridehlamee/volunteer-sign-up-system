@@ -1,2 +1,2 @@
-web: dotnet VolunteerSignUpSystem.dll
+web: dotnet publish/VolunteerSignUpSystem.dll
 

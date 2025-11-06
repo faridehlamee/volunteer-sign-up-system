@@ -110,6 +110,11 @@ appsettings.Production.json
 publish/
 *.publish
 
+# Publish profiles
+Properties/PublishProfiles/
+*.pubxml
+*.pubxml.user
+
 # User-specific files
 *.user
 *.csproj.user

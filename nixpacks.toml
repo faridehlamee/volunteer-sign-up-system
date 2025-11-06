@@ -8,5 +8,5 @@ cmds = ["dotnet restore"]
 cmds = ["dotnet publish -c Release -o ./publish"]
 
 [start]
-cmd = "cd publish && dotnet VolunteerSignUpSystem.dll"
+cmd = "dotnet publish/VolunteerSignUpSystem.dll"
 
