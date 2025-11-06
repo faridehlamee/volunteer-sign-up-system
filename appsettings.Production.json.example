@@ -1,0 +1,18 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning",
+      "Microsoft.EntityFrameworkCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "Resend": {
+    "ApiKey": "YOUR_RESEND_API_KEY_HERE",
+    "FromEmail": "noreply@yourdomain.com",
+    "AdminEmail": "admin@yourdomain.com",
+    "TestRecipientEmail": "",
+    "UseTestRecipient": false
+  }
+}
+

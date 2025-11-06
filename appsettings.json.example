@@ -1,0 +1,17 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "Resend": {
+    "ApiKey": "YOUR_RESEND_API_KEY_HERE",
+    "FromEmail": "onboarding@resend.dev",
+    "AdminEmail": "admin@yourdomain.com",
+    "TestRecipientEmail": "your-verified-email@example.com",
+    "UseTestRecipient": true
+  }
+}
+

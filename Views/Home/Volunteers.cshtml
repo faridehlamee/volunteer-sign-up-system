@@ -1,0 +1,100 @@
+@model List<VolunteerSignUp>
+@{
+    ViewData["Title"] = "Volunteers";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="mb-2">Volunteer Sign-Ups</h2>
+            <p class="text-muted mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill me-1" viewBox="0 0 16 16" style="vertical-align: middle;">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216Z"/>
+                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                </svg>
+                Total volunteers registered: <strong class="text-primary">@Model.Count</strong>
+            </p>
+        </div>
+        <div>
+            <a asp-action="Index" class="btn btn-outline-secondary me-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house me-1" viewBox="0 0 16 16" style="vertical-align: middle;">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+                </svg>
+                Back to Home
+            </a>
+            <a asp-action="BecomeVolunteer" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus me-1" viewBox="0 0 16 16" style="vertical-align: middle;">
+                    <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+                New Sign-Up
+            </a>
+        </div>
+    </div>
+    
+    @if (Model.Any())
+    {
+        <div class="card shadow-sm">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 60px;">#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Interests</th>
+                                <th>Availability</th>
+                                <th style="width: 180px;">Signed Up</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var volunteer in Model)
+                            {
+                                <tr>
+                                    <td class="text-muted">@volunteer.Id</td>
+                                    <td><strong>@volunteer.Name</strong></td>
+                                    <td>
+                                        <a href="mailto:@volunteer.Email" class="text-decoration-none">@volunteer.Email</a>
+                                    </td>
+                                    <td>
+                                        @if (string.IsNullOrWhiteSpace(volunteer.Interests))
+                                        {
+                                            <em class="text-muted">Not specified</em>
+                                        }
+                                        else
+                                        {
+                                            @volunteer.Interests
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (string.IsNullOrWhiteSpace(volunteer.Availability))
+                                        {
+                                            <em class="text-muted">Not specified</em>
+                                        }
+                                        else
+                                        {
+                                            @volunteer.Availability
+                                        }
+                                    </td>
+                                    <td class="text-muted small">
+                                        @volunteer.CreatedAt.ToString("MMM dd, yyyy")<br>
+                                        <span class="text-muted">@volunteer.CreatedAt.ToString("HH:mm")</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info shadow-sm">
+            <h5 class="alert-heading">No Volunteers Yet</h5>
+            <p class="mb-0">No volunteers have signed up yet. <a asp-action="BecomeVolunteer" class="alert-link">Be the first to sign up!</a></p>
+        </div>
+    }
+</div>
+
