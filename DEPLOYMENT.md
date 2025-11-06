@@ -1,6 +1,13 @@
 # Deployment Guide - Volunteer Sign-Up System
 
-This guide will help you deploy the Volunteer Sign-Up System to a subdomain.
+This guide will help you deploy the Volunteer Sign-Up System to various platforms including Railway, Vercel, and traditional servers.
+
+## Platform Compatibility
+
+- ✅ **Railway** - Fully supported (recommended for easy deployment)
+- ❌ **Vercel** - Not supported (Vercel doesn't support .NET applications)
+- ✅ **Traditional Servers** - Windows IIS or Linux (Nginx/systemd)
+- ✅ **Other Cloud Platforms** - Azure App Service, AWS Elastic Beanstalk, Heroku, etc.
 
 ## Prerequisites
 
@@ -9,7 +16,68 @@ This guide will help you deploy the Volunteer Sign-Up System to a subdomain.
 - Domain/subdomain configured (e.g., `volunteers.yourdomain.com`)
 - Resend API key and verified domain
 
-## Step 1: Publish the Application
+## Quick Deploy: Railway (Recommended)
+
+Railway is the easiest way to deploy this .NET application. It automatically detects .NET projects and handles deployment.
+
+### Step 1: Prepare Your Repository
+
+1. **Push your code to GitHub/GitLab/Bitbucket**
+   ```bash
+   git remote add origin <your-repository-url>
+   git push -u origin main
+   ```
+
+### Step 2: Deploy to Railway
+
+1. **Sign up/Login to Railway**
+   - Go to [railway.app](https://railway.app)
+   - Sign up with GitHub (recommended)
+
+2. **Create a New Project**
+   - Click "New Project"
+   - Select "Deploy from GitHub repo"
+   - Choose your repository
+
+3. **Configure Environment Variables**
+   - Go to your project → Variables tab
+   - Add the following environment variables:
+     ```
+     ASPNETCORE_ENVIRONMENT=Production
+     Resend__ApiKey=re_your_api_key_here
+     Resend__FromEmail=noreply@kiatechsoftware.com
+     Resend__AdminEmail=info@kiatechsoftware.com
+     Resend__UseTestRecipient=false
+     ```
+
+4. **Configure Custom Domain (Optional)**
+   - Go to Settings → Networking
+   - Add your custom domain (e.g., `volunteers.kiatechsoftware.com`)
+   - Railway will provide DNS records to add
+
+5. **Deploy**
+   - Railway will automatically detect the .NET project
+   - It will build and deploy your application
+   - Your app will be live at `https://your-app-name.up.railway.app`
+
+### Railway Features
+
+- ✅ Automatic HTTPS
+- ✅ Free tier available ($5 credit/month)
+- ✅ Automatic deployments from Git
+- ✅ Environment variable management
+- ✅ Custom domains
+- ✅ Persistent storage for SQLite database
+
+### Railway Pricing
+
+- **Hobby Plan**: $5/month credit (good for small projects)
+- **Pro Plan**: $20/month + usage
+- Free tier available for testing
+
+---
+
+## Step 1: Publish the Application (Traditional Deployment)
 
 ### Option A: Publish for Windows IIS
 

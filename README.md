@@ -112,7 +112,26 @@ Then update them with your actual API keys and settings.
 
 ## Deployment
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to a subdomain or production server.
+### Quick Deploy: Railway (Recommended) 🚀
+
+The easiest way to deploy is using **Railway**:
+
+1. Push your code to GitHub
+2. Sign up at [railway.app](https://railway.app)
+3. Create a new project from your GitHub repo
+4. Add environment variables (see [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md))
+5. Deploy! Your app will be live in minutes
+
+See [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md) for detailed Railway deployment instructions.
+
+### Other Deployment Options
+
+- **Traditional Servers**: See [DEPLOYMENT.md](DEPLOYMENT.md) for IIS/Linux deployment
+- **Azure App Service**: Supports .NET out of the box
+- **AWS Elastic Beanstalk**: Supports .NET applications
+- **Heroku**: Supports .NET with buildpack
+
+**Note**: Vercel does **not** support .NET applications. Use Railway, Azure, AWS, or traditional servers instead.
 
 ## Notes
 
