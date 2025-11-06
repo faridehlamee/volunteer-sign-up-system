@@ -19,6 +19,10 @@ A .NET 8.0 web application for managing volunteer sign-ups for community events.
 ## Setup Instructions
 
 1. **Clone or download this repository**
+   ```bash
+   git clone <repository-url>
+   cd volunteer-sign-up-system
+   ```
 
 2. **Install dependencies:**
    ```bash
@@ -26,9 +30,20 @@ A .NET 8.0 web application for managing volunteer sign-ups for community events.
    ```
 
 3. **Configure Resend API:**
+   - Copy the example configuration files:
+     ```bash
+     # Windows
+     copy appsettings.json.example appsettings.json
+     copy appsettings.Development.json.example appsettings.Development.json
+     copy appsettings.Production.json.example appsettings.Production.json
+     
+     # Linux/Mac
+     cp appsettings.json.example appsettings.json
+     cp appsettings.Development.json.example appsettings.Development.json
+     cp appsettings.Production.json.example appsettings.Production.json
+     ```
    - Get your API key from [resend.com](https://resend.dev)
-   - Open `appsettings.json`
-   - Replace `YOUR_RESEND_API_KEY_HERE` with your actual Resend API key
+   - Edit `appsettings.json` and replace `YOUR_RESEND_API_KEY_HERE` with your actual Resend API key
    - Update `FromEmail` with your verified domain email (or use `onboarding@resend.dev` for testing)
    - Update `AdminEmail` with the email address where you want to receive notifications
 
@@ -84,9 +99,25 @@ The application uses SQLite by default. The database file (`volunteers.db`) will
    - Admin receives notification email
    - Data is stored in the database
 
+## Git Repository
+
+This project is version controlled with Git. Sensitive configuration files (`appsettings.json`, `appsettings.Development.json`, `appsettings.Production.json`) are excluded from the repository for security. 
+
+**Important:** After cloning, copy the `.example` files to create your configuration files:
+- `appsettings.json.example` → `appsettings.json`
+- `appsettings.Development.json.example` → `appsettings.Development.json`
+- `appsettings.Production.json.example` → `appsettings.Production.json`
+
+Then update them with your actual API keys and settings.
+
+## Deployment
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions to a subdomain or production server.
+
 ## Notes
 
 - Make sure your Resend API key has the necessary permissions
 - For production, use environment variables or Azure Key Vault for sensitive configuration
 - Consider adding a custom domain in Resend for better email deliverability
+- Never commit `appsettings.json` files with real API keys to Git
 
