@@ -5,7 +5,7 @@
     "buildCommand": "dotnet publish -c Release -o ./publish"
   },
   "deploy": {
-    "startCommand": "dotnet VolunteerSignUpSystem.dll",
+    "startCommand": "dotnet publish/VolunteerSignUpSystem.dll",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
